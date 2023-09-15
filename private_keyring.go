@@ -3,6 +3,8 @@ package keyring
 import (
 	"crypto"
 	"io"
+
+	"github.com/gnzlabs/keyring/errors"
 )
 
 type PrivateKeyRing interface {
@@ -32,7 +34,7 @@ func NewPrivate(backend Keystore) (keyring *Private, err error) {
 
 func (private Private) signWithKey(key crypto.PrivateKey, rand io.Reader, digest []byte, opts crypto.SignerOpts) (signature []byte, err error) {
 	if signer, ok := key.(crypto.Signer); !ok {
-		err = ErrInvalidSigningKey
+		err = errors.ErrInvalidSigningKey
 	} else {
 		signature, err = signer.Sign(rand, digest, opts)
 	}
@@ -62,7 +64,7 @@ func (private Private) Decrypt(rand io.Reader, msg []byte, opts crypto.Decrypter
 	if encryptionKey, e := private.Keyring.GetPrivateKey(EncryptionKeySlot); e != nil {
 		err = e
 	} else if decrypter, ok := encryptionKey.(crypto.Decrypter); !ok {
-		err = ErrInvalidDecryptionKey
+		err = errors.ErrInvalidDecryptionKey
 	} else {
 		plaintext, err = decrypter.Decrypt(rand, msg, opts)
 	}
