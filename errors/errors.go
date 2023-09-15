@@ -6,6 +6,7 @@ const (
 )
 
 const (
+	ErrInvalidKeySlot                 KeystoreError = "invalid key slot"
 	ErrUnsupportedAlgorithmForKeySlot KeystoreError = "unsupported algorithm for key slot"
 	ErrExportNotAllowed               KeystoreError = "export not allowed"
 	ErrImportNotAllowed               KeystoreError = "import not allowed"
