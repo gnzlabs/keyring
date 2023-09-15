@@ -10,4 +10,4 @@ I plan to support the following coprocessors at some point in the future:
  - Microchip Technology's [ATECC608A](https://www.microchip.com/en-us/product/ATECC608A)
  - [Tentative] Apple's [Secure Enclave](https://support.apple.com/guide/security/secure-enclave-sec59b0b31ff/web)
 
-This package defines a common interface for interacting with the hardware listed above.
+This package defines a common interface for interacting with the hardware listed above. Additionally, read-only support is planned for certificates stored within a [WUMBO-formatted block object](https://github.com/gnzlabs/wumbo).
