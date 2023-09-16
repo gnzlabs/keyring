@@ -8,6 +8,8 @@ const (
 	EC384Key
 	Ed25519Key
 	ManagementKey
+	DilitiumKey
+	KyberKey
 )
 
 type KeySlot uint8
